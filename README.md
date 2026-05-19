@@ -1,32 +1,123 @@
-# Linux Character Device Driver Project
+# Linux Character Device Driver
 
-## Introduction
+一个简单的 Linux 字符设备驱动程序项目，用于学习 BSP/Linux 驱动程序
+---
 
-一个基于嵌入式Linux的Linux字符设备驱动程序学习项目
+# Features
 
-## Features
+- Linux 内核模块
 
-- Linux 字符设备驱动程序
+- 字符设备驱动程序
 
-- 应用程序和驱动程序交互
+- 读写支持
 
-- Makefile 构建
+- 用户内核通信
 
-- Linux 内核模块开发
-## Project Structure
+- 自动创建 /dev 节点
+---
+
+# Project Structure
 
 ```text
-.
-├── Makefile
-├── main.c
-├── README.md
-└── .gitignore
+linux_driver_project_github/
+├── driver/
+│   ├── chrdevbase.c
+│   └── Makefile
+│
+├── app/
+│   └── chrdevbaseAPP.c
+│
+├── docs/
+│
+├── screenshots/
+│
+└── README.md
+```
 
-## Build
+---
+
+# Build Driver
+
+```bash
+cd driver
 make
+```
 
-## Run
-insmod chrdevbase.ko
+---
 
-## Author
-Embedded Linux learner_Cerole
+# Load Driver
+
+```bash
+sudo insmod chrdevbase.ko
+```
+
+---
+
+# Check Device
+
+```bash
+ls /dev/chrdevbase
+```
+
+---
+
+# Build APP
+
+```bash
+cd app
+gcc chrdevbaseAPP.c -o app
+```
+
+---
+
+# Test Read
+
+```bash
+sudo ./app /dev/chrdevbase 1
+```
+
+---
+
+# Test Write
+
+```bash
+sudo ./app /dev/chrdevbase 2
+```
+
+---
+
+# Kernel Log
+
+```bash
+sudo dmesg | tail
+```
+
+---
+
+# Communication Flow
+
+APP -> system call -> VFS -> driver -> kernel buffer
+
+---
+
+# Environment
+
+- Ubuntu 24.04
+- Linux Kernel 6.x
+- GCC 13
+
+---
+
+# Future Work
+
+- ioctl
+- cdev
+- GPIO driver
+- platform driver
+- device tree
+
+---
+
+# Author
+
+Cerole
