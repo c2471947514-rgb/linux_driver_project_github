@@ -1,7 +1,12 @@
 *.o
 *.ko
+*.mod
 *.mod.c
 *.order
 *.symvers
-modules.order
+*.cmd
+
 Module.symvers
+modules.order
+
+app/app
