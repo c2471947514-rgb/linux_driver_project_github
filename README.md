@@ -1,47 +1,45 @@
-# Linux Character Device Driver
+# Linux Driver Project
 
-一个简单的 Linux 字符设备驱动程序项目，用于学习 BSP/Linux 驱动程序
----
+一个用于 BSP 和嵌入式 Linux 开发的个人 Linux 驱动程序学习项目。
 
-# Features
-
-- Linux 内核模块
-
-- 字符设备驱动程序
-
-- 读写支持
-
-- 用户内核通信
-
-- 自动创建 /dev 节点
----
-
-# Project Structure
+## Project Structure
 
 ```text
 linux_driver_project_github/
 ├── driver/
-│   ├── chrdevbase.c
-│   └── Makefile
-│
-├── app/
-│   └── chrdevbaseAPP.c
-│
+│   ├── basic_chrdev/
+│   └── ioctl_demo/
+├── user/
+│   ├── app_basic/
+│   └── app_ioctl/
 ├── docs/
-│
 ├── screenshots/
-│
-└── README.md
-```
+├── README.md
+└── .gitignore
+Basic Character Device Driver
 
----
+Features:
 
-# Build Driver
+注册字符设备
 
-```bash
-cd driver
+自动创建设备节点
+
+支持打开/读取/写入
+
+用户空间测试应用程序
+
+Build Driver
+
+cd driver/basic_chrdev
 make
-```
+Build APP
+cd user/app_basic
+gcc chrdevbaseAPP.c -o app
+Run
+
+sudo insmod chrdevbase.ko
+sudo ./app /dev/chrdevbase 1
+sudo ./app /dev/chrdevbase 2
 
 ---
 
